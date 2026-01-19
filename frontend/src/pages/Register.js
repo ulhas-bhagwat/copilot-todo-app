@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import authService from '../services/authService';
+import { VALIDATION_RULES, ERROR_MESSAGES } from '../utils/validation';
 import './Auth.css';
 
 const Register = () => {
@@ -16,12 +17,12 @@ const Register = () => {
     setError('');
 
     if (password !== confirmPassword) {
-      setError('Passwords do not match');
+      setError(ERROR_MESSAGES.PASSWORDS_DONT_MATCH);
       return;
     }
 
-    if (password.length < 6) {
-      setError('Password must be at least 6 characters long');
+    if (password.length < VALIDATION_RULES.PASSWORD_MIN_LENGTH) {
+      setError(ERROR_MESSAGES.PASSWORD_TOO_SHORT);
       return;
     }
 

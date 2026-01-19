@@ -24,7 +24,7 @@ const register = async (req, res) => {
     }
 
     // Hash password
-    const saltRounds = 10;
+    const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS) || 10;
     const passwordHash = await bcrypt.hash(password, saltRounds);
 
     // Create user

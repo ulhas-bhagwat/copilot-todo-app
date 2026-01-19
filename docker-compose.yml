@@ -33,7 +33,7 @@ services:
       DB_USER: todouser
       DB_PASSWORD: todopassword
       DB_NAME: tododb
-      JWT_SECRET: your-secret-key-change-this-in-production
+      JWT_SECRET: ${JWT_SECRET:-your-secret-key-change-this-in-production}
       JWT_EXPIRES_IN: 24h
       FRONTEND_URL: http://localhost:3000
     ports:
